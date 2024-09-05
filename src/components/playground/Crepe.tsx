@@ -1,6 +1,7 @@
 import { useToast } from "@/components/toast";
 import { useDarkMode } from "@/providers";
 import { encode } from "@/utils/share";
+import { math } from '@milkdown/plugin-math';
 import { Crepe } from "@milkdown/crepe";
 import { editorViewCtx, parserCtx } from "@milkdown/kit/core";
 import { listener, listenerCtx } from "@milkdown/kit/plugin/listener";
@@ -53,7 +54,8 @@ const CrepeEditor: FC<MilkdownProps> = ({ onChange }) => {
           }, 200)
         );
       })
-      .use(listener);
+      .use(listener)
+      .use(math);
 
     crepe.create().then(() => {
       (crepeRef as MutableRefObject<Crepe>).current = crepe;

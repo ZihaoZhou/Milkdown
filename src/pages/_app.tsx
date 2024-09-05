@@ -1,5 +1,3 @@
-import Footer from "@/components/footer";
-import { Header } from "@/components/header";
 import PwaUpdater from "@/components/pwa-updater";
 import { DocSearchProvider, LayoutProvider } from "@/providers";
 import { DocSearch } from "@/utils/types";
@@ -9,6 +7,7 @@ import NextApp, { AppContext, AppInitialProps } from "next/app";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+import 'katex/dist/katex.css';
 import "@docsearch/css";
 import "@milkdown/theme-nord/style.css";
 import "@/styles/globals.css";
@@ -40,16 +39,14 @@ export default function App({
       </Head>
       <DocSearchProvider docSearch={docSearch}>
         <LayoutProvider>
-          <Header />
           <main
             className={clsx(
               "flex-grow",
-              pathname !== "/" ? "mt-[72px]" : "bg-white dark:bg-nord0"
+              pathname !== "/" ? "mt" : "bg-white dark:bg-nord0"
             )}
           >
             <Component {...componentProps} />
           </main>
-          <Footer />
           <PwaUpdater />
           <Analytics />
         </LayoutProvider>
